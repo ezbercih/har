@@ -21,6 +21,7 @@ func init() {
 }
 
 func TestParse(t *testing.T) {
+	defer inFile.Close()
 	log, err = NewLog(inFile)
 	if err != nil {
 		t.Errorf("Failed to parse: %v", err)
@@ -33,6 +34,7 @@ func TestDump(t *testing.T) {
 	if err != nil {
 		t.Errorf("Failed to create temp file for writing: %v", err)
 	}
+	defer outFile.Close()
 	err = Dump(outFile, log)
 	if err != nil {
 		t.Errorf("Failed to dump: %v", err)
