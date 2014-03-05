@@ -1,4 +1,4 @@
-// Package har provides types that represent HAR spec version 1.2 and it can parse and HAR files according to this version of the spec.
+// Package har provides types that represent HAR spec version 1.2 and it can parse and dump HAR files according to this version of the spec.
 // More details can be found at http://www.softwareishard.com/blog/har-12-spec/
 package har
 
@@ -155,7 +155,7 @@ type Timings struct {
 	Comment string `json:"comment,omitempty"`
 }
 
-// Dump unmarshalles the provided instance of Log type to JSON and writes to provided object that implementes io.Writer.
+// Dump unmarshalles the provided instance of Log type to JSON and writes to provided object that implements io.Writer.
 func Dump(w io.Writer, log *Log) error {
 	root := make(map[string]*Log)
 	root["log"] = log
